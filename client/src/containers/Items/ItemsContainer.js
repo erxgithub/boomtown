@@ -34,8 +34,8 @@ class ItemsContainer extends Component {
                 return data;
             });
         })).then((values) => {
-            console.log('items', values[0]);
-            console.log('users', values[1]);
+            //console.log('items', values[0]);
+            //console.log('users', values[1]);
 
             // let items = values[0];
             // let users = values[1];
@@ -49,7 +49,7 @@ class ItemsContainer extends Component {
                 return item;
             });
 
-            console.log('data', itemsData);
+            //console.log('data', itemsData);
 
             this.setState({
                 itemsData,
@@ -61,8 +61,11 @@ class ItemsContainer extends Component {
     }
 
     render() {
+        //if (this.state.response.data !== undefined) {
+        let itemsData = this.state.itemsData;
+
         return (
-            <Items />
+            <Items itemsData={itemsData} />
         );
     }
 }

@@ -1,0 +1,8 @@
+.masonryItem {
+    width: 30%;
+    margin: 10px;
+}
+
+.cardAvatar img {
+    border-radius: 50%;
+}
