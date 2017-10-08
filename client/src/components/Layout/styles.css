@@ -11,3 +11,7 @@
   width: 100%;
   flex:1;
 }
+
+.logo {
+    width: 2rem;
+}

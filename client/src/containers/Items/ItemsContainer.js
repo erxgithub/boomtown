@@ -43,8 +43,15 @@ class ItemsContainer extends Component {
             const [items, users] = values;
 
             let itemsData = items.map((item) => {
-                const itemowner = users.find((user) => user.id === item.itemowner)
-                item.itemowner = itemowner;
+                if (item.itemowner !== null) {
+                    const itemowner = users.find((user) => user.id === item.itemowner)
+                    item.itemowner = itemowner;
+                }
+
+                if (item.borrower !== null) {
+                    const itemborrower = users.find((user) => user.id === item.borrower)
+                    item.borrower = itemborrower.fullname;
+                }
 
                 return item;
             });
@@ -61,12 +68,20 @@ class ItemsContainer extends Component {
     }
 
     render() {
-        //if (this.state.response.data !== undefined) {
         let itemsData = this.state.itemsData;
 
-        return (
-            <Items itemsData={itemsData} />
-        );
+        if (itemsData !== undefined && itemsData.length > 0) {
+            console.log(itemsData);
+
+            return (
+                <Items itemsData={itemsData} />
+            );
+        } else {
+            return(
+                <div>
+                </div>
+            );
+        }
     }
 }
 
