@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Items from './Items';
+import Progress from '../../components/Progress';
 
 class ItemsContainer extends Component {
     constructor() {
@@ -41,6 +42,7 @@ class ItemsContainer extends Component {
             // let users = values[1];
 
             const [items, users] = values;
+            const uniqueTags = [];
 
             let itemsData = items.map((item) => {
                 if (item.itemowner !== null) {
@@ -53,9 +55,18 @@ class ItemsContainer extends Component {
                     item.borrower = itemborrower.fullname;
                 }
 
+                item.tags.map((tag) => {
+                    if (uniqueTags.indexOf(tag) === -1) {
+                        uniqueTags.push(tag)
+                    }
+                });
+
                 return item;
             });
 
+            uniqueTags.sort();
+
+            console.log(uniqueTags);
             //console.log('data', itemsData);
 
             this.setState({
@@ -70,7 +81,11 @@ class ItemsContainer extends Component {
     render() {
         let itemsData = this.state.itemsData;
 
-        if (itemsData !== undefined && itemsData.length > 0) {
+        if (this.state.isLoading) {
+            return (
+                <Progress />
+            );
+        } else if (itemsData !== undefined && itemsData.length > 0) {
             console.log(itemsData);
 
             return (
