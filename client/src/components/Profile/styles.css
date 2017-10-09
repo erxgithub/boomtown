@@ -1,8 +1,45 @@
-.masonryItem {
-    width: 30%;
-    margin: 10px;
+.profileCard {
+    width: 50%;
+    margin: 2.5rem 0 2rem 0;
 }
 
-.cardAvatar img {
+.profile {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 3.25rem 2rem 3.25rem;
+}
+
+.profileUser p:nth-child(1) {
+    font-size: 2.5rem;
+}
+
+.profileUser p:nth-child(2) {
+    font-size: 1rem;
+    color: grey;
+}
+
+.profileSummary {
+    display: flex;
+}
+
+.profileItem {
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+.profileItem p:nth-child(1) {
+    font-size: 1.25rem;
+}
+
+.profileItem p:nth-child(2) {
+    font-size: 1rem;
+    color: grey;
+}
+
+.profileAvatar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profileAvatar img {
     border-radius: 50%;
 }

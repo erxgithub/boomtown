@@ -16,28 +16,25 @@ import Profile from '../Profile';
 
 import './styles.css';
 
-const BoomtownRouter = () => (
+const Layout = ({ children }) => (
     <Router>
-        <div>
-            <Switch>
-                <Route exact path="/profile" component={Profile} />
-            </Switch>
+        <div className="appContentWrapper">
+            <div className="appHeader">
+                {/* Might want to put your header bar here... */}
+                <HeaderBar />
+            </div>
+            <div className="profileSection">
+                <Switch>
+                    <Route exact path="/profile" component={Profile} />
+                </Switch>
+            </div>
+            <div className="appContent">
+                {children}
+            </div>
+            {/* And a footer here, but not on the login route... */}
+            <FooterBar />
         </div>
     </Router>
-);
-
-const Layout = ({ children }) => (
-    <div className="appContentWrapper">
-        <div className="appHeader">
-            {/* Might want to put your header bar here... */}
-            <HeaderBar />
-        </div>
-        <div className="appContent">
-            {children}
-        </div>
-        {/* And a footer here, but not on the login route... */}
-        <FooterBar />
-    </div>
 );
 
 Layout.defaultProps = {

@@ -59,6 +59,8 @@ class ItemsContainer extends Component {
                     if (uniqueTags.indexOf(tag) === -1) {
                         uniqueTags.push(tag)
                     }
+
+                    return tag;
                 });
 
                 return item;

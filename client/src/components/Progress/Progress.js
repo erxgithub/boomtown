@@ -5,7 +5,7 @@ import './styles.css';
 
 const Progress = () => (
     <div className="progress">
-        <CircularProgress />
+        <CircularProgress color="white"/>
     </div>
 );
 

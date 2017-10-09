@@ -1,11 +1,12 @@
 import React from 'react';
-
-import './styles.css';
+import {Link} from 'react-router-dom';
 
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+
+import './styles.css';
 
 import logo from '../../images/boomtown-logo.svg';
 
@@ -47,10 +48,11 @@ const styles = {
 const HeaderBar = () => (
     <Toolbar style={styles.toolbar}>
         <ToolbarGroup firstChild={true}>
-            <img className="logo" src={logo} alt="My logo" />
+            <Link to="/">{<img className="logo" src={logo} alt="My logo" />}</Link>
             <SelectField
               multiple={true}
               hintText="Filter by Tag"
+              autoWidth={true}
               style={styles.dropdown}
             >
                 {tags.map((tag, i) => (
