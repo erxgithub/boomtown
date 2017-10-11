@@ -11,6 +11,7 @@ class ProfileContainer extends Component {
 
         this.state = {
             itemsData: [],
+            tagData: [],
             profileData: {
                 id: '',
                 fullname: '',
@@ -60,42 +61,38 @@ class ProfileContainer extends Component {
                 shared: 0,
                 borrowed: 0
             };
-            const uniqueTags = [];
 
             let itemsData = items.map((item) => {
                 if (item.itemowner !== null) {
                     const itemowner = users.find((user) => user.id === item.itemowner)
                     item.itemowner = itemowner;
 
-                    if (profileData.id.length === 0 && itemowner.id === profileId) {
-                        profileData.id = itemowner.id;
-                        profileData.fullname = itemowner.fullname;
-                        profileData.email = itemowner.email;
-                        profileData.bio = itemowner.bio;
+                    if (itemowner.id === profileId) {
+                        if (profileData.id.length === 0) {
+                            profileData.id = itemowner.id;
+                            profileData.fullname = itemowner.fullname;
+                            profileData.email = itemowner.email;
+                            profileData.bio = itemowner.bio;
+                        }
+
+                        profileData.shared++;
                     }
                 }
 
                 if (item.borrower !== null) {
+                    if (item.borrower === profileId) {
+                        profileData.borrowed++;
+                    }
+
                     const itemborrower = users.find((user) => user.id === item.borrower)
                     item.borrower = itemborrower.fullname;
                 }
-
-                item.tags.map((tag) => {
-                    if (uniqueTags.indexOf(tag) === -1) {
-                        uniqueTags.push(tag)
-                    }
-
-                    return tag;
-                });
 
                 return item;
             }).filter((item) => {
                 return item.itemowner.id === profileId;
             });
 
-            uniqueTags.sort();
-
-            console.log(uniqueTags);
             //console.log('data', itemsData);
 
             this.setState({
@@ -110,6 +107,7 @@ class ProfileContainer extends Component {
 
     render() {
         let itemsData = this.state.itemsData;
+        let tagData = this.state.tagData;
         let profileData = this.state.profileData;
 
         if (this.state.isLoading) {
@@ -120,7 +118,7 @@ class ProfileContainer extends Component {
             console.log(itemsData);
 
             return (
-                <Profile itemsData={itemsData} profileData={profileData} />
+                <Profile itemsData={itemsData} tagData={tagData} profileData={profileData} />
             );
         } else {
             return(

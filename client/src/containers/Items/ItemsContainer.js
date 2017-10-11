@@ -10,6 +10,7 @@ class ItemsContainer extends Component {
 
         this.state = {
             itemsData: [],
+            tagData: [],
             isLoading: false
         }
     }
@@ -42,7 +43,7 @@ class ItemsContainer extends Component {
             // let users = values[1];
 
             const [items, users] = values;
-            const uniqueTags = [];
+            const tagData = [];
 
             let itemsData = items.map((item) => {
                 if (item.itemowner !== null) {
@@ -56,8 +57,8 @@ class ItemsContainer extends Component {
                 }
 
                 item.tags.map((tag) => {
-                    if (uniqueTags.indexOf(tag) === -1) {
-                        uniqueTags.push(tag)
+                    if (tagData.indexOf(tag) === -1) {
+                        tagData.push(tag)
                     }
 
                     return tag;
@@ -66,13 +67,14 @@ class ItemsContainer extends Component {
                 return item;
             });
 
-            uniqueTags.sort();
+            tagData.sort();
 
-            console.log(uniqueTags);
+            console.log(tagData);
             //console.log('data', itemsData);
 
             this.setState({
                 itemsData,
+                tagData,
                 isLoading: false
             });
         }).catch((error) => {
@@ -82,6 +84,7 @@ class ItemsContainer extends Component {
 
     render() {
         let itemsData = this.state.itemsData;
+        let tagData = this.state.tagData;
 
         if (this.state.isLoading) {
             return (
@@ -91,7 +94,7 @@ class ItemsContainer extends Component {
             console.log(itemsData);
 
             return (
-                <Items itemsData={itemsData} />
+                <Items itemsData={itemsData} tagData={tagData} />
             );
         } else {
             return(

@@ -10,16 +10,6 @@ import './styles.css';
 
 import logo from '../../images/boomtown-logo.svg';
 
-const tags = [
-    "Electronics",
-    "Household Items",
-    "Musical Instruments",
-    "Physical Media",
-    "Recreational Equipment",
-    "Sporting Goods",
-    "Tools",
-];
-
 const styles = {
     toolbar: {
         paddingTop: '2rem',
@@ -45,29 +35,31 @@ const styles = {
     },
 };
 
-const HeaderBar = () => (
+const HeaderBar = ({tagData}) => (
     <Toolbar style={styles.toolbar}>
         <ToolbarGroup firstChild={true}>
             <Link to="/">{<img className="logo" src={logo} alt="My logo" />}</Link>
-            <SelectField
-              multiple={true}
-              hintText="Filter by Tag"
-              autoWidth={true}
-              style={styles.dropdown}
-            >
-                {tags.map((tag, i) => (
-                    <MenuItem
-                        key={i}
-                        insetChildren={true}
-                        checked={true}
-                        value={i + 1}
-                        primaryText={tag}
-                    />
-                ))}
-            </SelectField>
+            {tagData.length > 0 ?
+                <SelectField
+                  multiple={true}
+                  hintText="Filter by Tag"
+                  autoWidth={true}
+                  style={styles.dropdown}
+                >
+                    {tagData.map((tag, i) => (
+                        <MenuItem
+                            key={i}
+                            insetChildren={true}
+                            checked={true}
+                            value={i + 1}
+                            primaryText={tag}
+                        />
+                    ))}
+                </SelectField>
+            : ''}
         </ToolbarGroup>
         <ToolbarGroup lastChild={true}>
-            <RaisedButton href="/profile" label="MY PROFILE" primary={true} style={styles.profile} />
+            <RaisedButton href="/profile/eEvh1WUF5nb5eeUksUQb3Ph0kOU2" label="MY PROFILE" primary={true} style={styles.profile} />
             <RaisedButton label="LOGOUT" secondary={true} style={styles.logout} />
         </ToolbarGroup>
     </Toolbar>
