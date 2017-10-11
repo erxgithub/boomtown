@@ -14,6 +14,7 @@
     "react-masonry-component": "^5.0.7"
   },
   "devDependencies": {
+    "browser-router": "^0.2.0",
     "eslint": "^4.7.2",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.2.0",

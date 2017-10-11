@@ -6,7 +6,9 @@ import ItemCardList from '../../components/ItemCardList';
 
 const Items = ({itemsData}) => {
     return (
-        <ItemCardList itemsData={itemsData} />
+        <div className="appContent">
+            <ItemCardList itemsData={itemsData} />
+        </div>
     );
 }
 

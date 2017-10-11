@@ -2,23 +2,33 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Progress from '../../components/Progress';
 
-import Items from './Items';
+import Profile from './Profile';
+import Items from '../Items/Items';
 
-class ItemsContainer extends Component {
+class ProfileContainer extends Component {
     constructor() {
         super();
 
         this.state = {
             itemsData: [],
+            profileData: {
+                id: '',
+                fullname: '',
+                email: '',
+                bio: '',
+                shared: 0,
+                borrowed: 0
+            },
             isLoading: false
         }
     }
 
     componentDidMount() {
-        this.getItems();
+        console.log(this.props.match.params.id);
+        this.getItems(this.props.match.params.id);
     }
 
-    getItems() {
+    getItems(profileId) {
         let urls = [
             'http://localhost:3001/items',
             'http://localhost:3001/users'
@@ -42,12 +52,27 @@ class ItemsContainer extends Component {
             // let users = values[1];
 
             const [items, users] = values;
+            const profileData = {
+                id: '',
+                fullname: '',
+                email: '',
+                bio: '',
+                shared: 0,
+                borrowed: 0
+            };
             const uniqueTags = [];
 
             let itemsData = items.map((item) => {
                 if (item.itemowner !== null) {
                     const itemowner = users.find((user) => user.id === item.itemowner)
                     item.itemowner = itemowner;
+
+                    if (profileData.id.length === 0 && itemowner.id === profileId) {
+                        profileData.id = itemowner.id;
+                        profileData.fullname = itemowner.fullname;
+                        profileData.email = itemowner.email;
+                        profileData.bio = itemowner.bio;
+                    }
                 }
 
                 if (item.borrower !== null) {
@@ -64,6 +89,8 @@ class ItemsContainer extends Component {
                 });
 
                 return item;
+            }).filter((item) => {
+                return item.itemowner.id === profileId;
             });
 
             uniqueTags.sort();
@@ -73,6 +100,7 @@ class ItemsContainer extends Component {
 
             this.setState({
                 itemsData,
+                profileData,
                 isLoading: false
             });
         }).catch((error) => {
@@ -82,6 +110,7 @@ class ItemsContainer extends Component {
 
     render() {
         let itemsData = this.state.itemsData;
+        let profileData = this.state.profileData;
 
         if (this.state.isLoading) {
             return (
@@ -91,7 +120,7 @@ class ItemsContainer extends Component {
             console.log(itemsData);
 
             return (
-                <Items itemsData={itemsData} />
+                <Profile itemsData={itemsData} profileData={profileData} />
             );
         } else {
             return(
@@ -102,8 +131,8 @@ class ItemsContainer extends Component {
     }
 }
 
-ItemsContainer.propTypes = {
+ProfileContainer.propTypes = {
 
 };
 
-export default ItemsContainer;
+export default ProfileContainer;
