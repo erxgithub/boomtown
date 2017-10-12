@@ -11,11 +11,13 @@ import './styles.css';
 const ItemCard = ({item}) => (
     <Card className="masonryItem">
         <ItemCardMedia item={item} />
+        <a href={`/profile/${item.itemowner.id}`}>
         <CardHeader className="cardAvatar"
             title={item.itemowner.fullname}
             subtitle={Moment(item.created).fromNow()}
             avatar={<Gravatar email={item.itemowner.email} />}
         />
+        </a>
         <CardTitle title={item.title} subtitle={item.tags.map((tag, i) =>
             i > 0 ? ', ' + tag : tag )} />
         <CardText>

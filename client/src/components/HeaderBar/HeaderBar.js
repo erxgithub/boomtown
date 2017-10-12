@@ -50,7 +50,7 @@ const HeaderBar = ({tagData}) => (
                         <MenuItem
                             key={i}
                             insetChildren={true}
-                            checked={true}
+                            checked={false}
                             value={i + 1}
                             primaryText={tag}
                         />
