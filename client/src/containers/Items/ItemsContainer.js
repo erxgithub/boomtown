@@ -11,6 +11,7 @@ class ItemsContainer extends Component {
         this.state = {
             itemsData: [],
             tagData: [],
+            tagValues: [],
             isLoading: false
         }
     }
@@ -65,6 +66,22 @@ class ItemsContainer extends Component {
                 });
 
                 return item;
+            }).filter((item) => {
+                let tagValues = this.state.tagValues;
+                let tagFilter = true;
+
+                if (tagValues.length > 0) {
+                    tagFilter = false;
+
+                    for (let i = 0; i < tagValues.length; i++) {
+                        if (item.tags.find((tag) => tag === tagValues[i])) {
+                            tagFilter = true;
+                            break;
+                        }
+                    }
+                }
+
+                return tagFilter;
             });
 
             tagData.sort();
@@ -82,9 +99,15 @@ class ItemsContainer extends Component {
         });
     }
 
+    handleChange = (event, index, tagValues) => {
+        this.setState({tagValues})
+        this.getItems();
+    };
+
     render() {
         let itemsData = this.state.itemsData;
         let tagData = this.state.tagData;
+        let tagValues = this.state.tagValues;
 
         if (this.state.isLoading) {
             return (
@@ -92,9 +115,10 @@ class ItemsContainer extends Component {
             );
         } else if (itemsData !== undefined && itemsData.length > 0) {
             console.log(itemsData);
+            console.log(tagValues);
 
             return (
-                <Items itemsData={itemsData} tagData={tagData} />
+                <Items itemsData={itemsData} tagData={tagData} tagValues={tagValues} handleChange={this.handleChange.bind(this)} />
             );
         } else {
             return(

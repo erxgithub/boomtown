@@ -6,12 +6,12 @@ import HeaderBar from '../../components/HeaderBar';
 import FooterBar from '../../components/FooterBar';
 import ItemCardList from '../../components/ItemCardList';
 
-const Items = ({itemsData, tagData}) => {
+const Items = ({itemsData, tagData, tagValues, handleChange}) => {
     return (
         <div>
             <div className="appHeader">
                 {/* Might want to put your header bar here... */}
-                <HeaderBar tagData={tagData} />
+                <HeaderBar tagData={tagData} tagValues={tagValues} handleChange={handleChange}/>
             </div>
             <div className="appContent">
                 <ItemCardList itemsData={itemsData} />

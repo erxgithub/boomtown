@@ -35,7 +35,7 @@ const styles = {
     },
 };
 
-const HeaderBar = ({tagData}) => (
+const HeaderBar = ({tagData, tagValues, handleChange}) => (
     <Toolbar style={styles.toolbar}>
         <ToolbarGroup firstChild={true}>
             <Link to="/">{<img className="logo" src={logo} alt="My logo" />}</Link>
@@ -45,13 +45,16 @@ const HeaderBar = ({tagData}) => (
                   hintText="Filter by Tag"
                   autoWidth={true}
                   style={styles.dropdown}
+                  value={tagValues}
+                  onChange={handleChange}
+
                 >
                     {tagData.map((tag, i) => (
                         <MenuItem
                             key={i}
                             insetChildren={true}
-                            checked={false}
-                            value={i + 1}
+                            checked={tagValues && tagValues.indexOf(tag) > -1}
+                            value={tag}
                             primaryText={tag}
                         />
                     ))}

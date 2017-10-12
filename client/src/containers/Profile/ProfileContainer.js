@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Progress from '../../components/Progress';
 
 import Profile from './Profile';
-import Items from '../Items/Items';
 
 class ProfileContainer extends Component {
     constructor() {
