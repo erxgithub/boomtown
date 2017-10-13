@@ -14,9 +14,11 @@ const Profile = ({itemsData, tagData, profileData}) => {
                 {/* Might want to put your header bar here... */}
                 <HeaderBar tagData={tagData} />
             </div>
-            <div className="profileSection">
-                <ProfileCard itemsData={itemsData} profileData={profileData} />
-            </div>
+            {profileData.fullname.length > 0 ?
+                <div className="profileSection">
+                    <ProfileCard profileData={profileData} />
+                </div>
+            : ''}
             <div className="appContent">
                 <ItemCardList itemsData={itemsData} />
             </div>

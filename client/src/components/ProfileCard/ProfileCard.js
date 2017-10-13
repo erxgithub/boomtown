@@ -4,7 +4,7 @@ import Gravatar from 'react-gravatar'
 
 import './styles.css';
 
-const ProfileCard = ({itemsData, profileData}) => (
+const ProfileCard = ({profileData}) => (
     <Card className="profileCard">
         <div className="profile">
             <div className="profileUser">

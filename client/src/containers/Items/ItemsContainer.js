@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Progress from '../../components/Progress';
+import {connect} from 'react-redux';
+import { fetchItemsAndUsers, loadTagValues } from '../../redux/modules/items';
 
 import Items from './Items';
 
 class ItemsContainer extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            itemsData: [],
-            tagData: [],
-            tagValues: [],
-            isLoading: false
-        }
-    }
+    // constructor() {
+    //     super();
+    //
+    //     this.state = {
+    //         itemsData: [],
+    //         tagData: [],
+    //         tagValues: [],
+    //         isLoading: false
+    //     }
+    // }
 
     componentDidMount() {
-        this.getItems();
+        //this.getItems();
+        //console.log(this.props.match.params.id);
+        let tagValues = this.props.tagValues;
+        let profileId = this.props.match.params.id;
+        this.props.dispatch(fetchItemsAndUsers(tagValues, profileId));
     }
 
     getItems() {
@@ -100,16 +106,24 @@ class ItemsContainer extends Component {
     }
 
     handleChange = (event, index, tagValues) => {
-        this.setState({tagValues})
-        this.getItems();
+        //this.setState({tagValues})
+        //this.getItems();
+        this.props.dispatch(fetchItemsAndUsers(tagValues));
+        this.props.dispatch(loadTagValues(tagValues));
     };
 
     render() {
-        let itemsData = this.state.itemsData;
-        let tagData = this.state.tagData;
-        let tagValues = this.state.tagValues;
+        // let itemsData = this.state.itemsData;
+        // let tagData = this.state.tagData;
+        // let tagValues = this.state.tagValues;
 
-        if (this.state.isLoading) {
+        let itemsData = this.props.itemsData;
+        let tagData = this.props.tagData;
+        let tagValues = this.props.tagValues;
+        let profileData = this.props.profileData;
+        let isLoading = this.props.isLoading;
+
+        if (isLoading) {
             return (
                 <Progress />
             );
@@ -118,7 +132,7 @@ class ItemsContainer extends Component {
             console.log(tagValues);
 
             return (
-                <Items itemsData={itemsData} tagData={tagData} tagValues={tagValues} handleChange={this.handleChange.bind(this)} />
+                <Items itemsData={itemsData} tagData={tagData} tagValues={tagValues} profileData={profileData} handleChange={this.handleChange.bind(this)} />
             );
         } else {
             return(
@@ -133,4 +147,14 @@ ItemsContainer.propTypes = {
 
 };
 
-export default ItemsContainer;
+//export default ItemsContainer;
+
+const mapStateToProps = state => ({
+    isLoading: state.items.isLoading,
+    itemsData: state.items.itemsData,
+    tagData: state.items.tagData,
+    tagValues: state.items.tagValues
+    //itemFilters: state.items.itemFilters
+});
+
+export default connect(mapStateToProps)(ItemsContainer);
