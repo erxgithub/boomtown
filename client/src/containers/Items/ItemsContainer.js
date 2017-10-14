@@ -92,7 +92,7 @@ class ItemsContainer extends Component {
 
             tagData.sort();
 
-            console.log(tagData);
+            //console.log(tagData);
             //console.log('data', itemsData);
 
             this.setState({
@@ -130,6 +130,7 @@ class ItemsContainer extends Component {
         } else if (itemsData !== undefined && itemsData.length > 0) {
             console.log(itemsData);
             console.log(tagValues);
+            console.log(profileData);
 
             return (
                 <Items itemsData={itemsData} tagData={tagData} tagValues={tagValues} profileData={profileData} handleChange={this.handleChange.bind(this)} />
@@ -153,8 +154,8 @@ const mapStateToProps = state => ({
     isLoading: state.items.isLoading,
     itemsData: state.items.itemsData,
     tagData: state.items.tagData,
-    tagValues: state.items.tagValues
-    //itemFilters: state.items.itemFilters
+    tagValues: state.items.tagValues,
+    profileData: state.items.profileData
 });
 
 export default connect(mapStateToProps)(ItemsContainer);

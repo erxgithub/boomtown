@@ -42,6 +42,7 @@ export const getProfile = (items) => ({
 
 export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
     dispatch(getItemsLoading());
+    //console.log(profileId);
 
     let urls = [
         'http://localhost:3001/items',
@@ -102,13 +103,15 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
                 item.borrower = itemborrower.fullname;
             }
 
-            item.tags.map((tag) => {
-                if (tagData.indexOf(tag) === -1) {
-                    tagData.push(tag)
-                }
+            if (profileId === undefined) {
+                item.tags.map((tag) => {
+                    if (tagData.indexOf(tag) === -1) {
+                        tagData.push(tag)
+                    }
 
-                return tag;
-            });
+                    return tag;
+                });
+            }
 
             return item;
         }).filter((item) => {
@@ -135,12 +138,14 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
 
         tagData.sort();
 
-        console.log(tagData);
+        //console.log(tagData);
         //console.log('data', itemsData);
 
         dispatch(getItems(itemsData));
         dispatch(getTags(tagData));
         dispatch(getProfile(profileData));
+
+        //console.log(profileData);
 
         // this.setState({
         //     itemsData,

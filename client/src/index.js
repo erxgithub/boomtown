@@ -10,16 +10,12 @@ import muiTheme from './config/theme';
 import {
     BrowserRouter,
     Route,
-    Switch,
-    Link,
-    Redirect,
-    NavLink
+    Switch
 } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import Login from './containers/Login';
 import Items from './containers/Items';
-import Profile from './containers/Profile';
 
 const Boomtown = () => (
     <BrowserRouter>

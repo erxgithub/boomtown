@@ -5,3 +5,8 @@
   width: 100%;
   flex:1;
 }
+
+.profileSection {
+    display: flex;
+    justify-content: center;
+}

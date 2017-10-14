@@ -14,7 +14,7 @@ const Items = ({itemsData, tagData, tagValues, profileData, handleChange}) => {
                 {/* Might want to put your header bar here... */}
                 <HeaderBar tagData={tagData} tagValues={tagValues} handleChange={handleChange}/>
             </div>
-            {profileData !== undefined && profileData.fullname.length > 0 ?
+            {profileData !== undefined && profileData.shared > 0 ?
                 <div className="profileSection">
                     <ProfileCard profileData={profileData} />
                 </div>
