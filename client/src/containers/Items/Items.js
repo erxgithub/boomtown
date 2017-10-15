@@ -55,7 +55,8 @@ Items.propTypes = {
         email: PropTypes.string,
         bio: PropTypes.string,
         shared: PropTypes.number,
-        borrowed: PropTypes.number
+        borrowed: PropTypes.number,
+        borroweditems: PropTypes.array
     }),
     isLoading: PropTypes.bool.isRequired,
     handleChange: PropTypes.func.isRequired

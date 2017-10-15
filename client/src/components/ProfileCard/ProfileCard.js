@@ -8,9 +8,16 @@ import './styles.css';
 const ProfileCard = ({profileData}) => (
     <Card className="profileCard">
         <div className="profile">
+            <div>
             <div className="profileUser">
                 <p>{profileData.fullname}</p>
                 <p>{profileData.bio}</p>
+            </div>
+            <div className="borrowedItems">
+                <p>Currently borrowing:</p>
+                {profileData.borroweditems.map((item, i) =>
+                    <p key={i}>{`${item.title} from ${item.lender}`}</p>)}
+            </div>
             </div>
             <div className="profileSummary">
                 <div>
@@ -38,7 +45,8 @@ ProfileCard.propTypes = {
         email: PropTypes.string,
         bio: PropTypes.string,
         shared: PropTypes.number,
-        borrowed: PropTypes.number
+        borrowed: PropTypes.number,
+        borroweditems: PropTypes.array
     })
 };
 

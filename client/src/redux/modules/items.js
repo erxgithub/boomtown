@@ -65,7 +65,8 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
             email: '',
             bio: '',
             shared: 0,
-            borrowed: 0
+            borrowed: 0,
+            borroweditems: []
         };
 
         let itemsData = items.map((item) => {
@@ -87,6 +88,13 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
 
             if (item.borrower !== null) {
                 if (item.borrower === profileId) {
+                    if (item.itemowner !== null) {
+                        profileData.borroweditems.push({
+                            title: item.title,
+                            lender: item.itemowner.fullname
+                        });
+                    }
+
                     profileData.borrowed++;
                 }
 
@@ -97,7 +105,7 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
             if (profileId === undefined) {
                 item.tags.map((tag) => {
                     if (tagData.indexOf(tag) === -1) {
-                        tagData.push(tag)
+                        tagData.push(tag);
                     }
 
                     return tag;
