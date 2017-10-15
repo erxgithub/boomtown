@@ -14,9 +14,9 @@ const Items = ({itemsData, tagData, tagValues, profileData, isLoading, handleCha
             <Progress />
         );
     } else {
-        console.log(itemsData);
-        console.log(tagValues);
-        console.log(profileData);
+        // console.log(itemsData);
+        // console.log(tagValues);
+        // console.log(profileData);
 
         return (
             <div className="appContent">

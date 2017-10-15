@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
 
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import SelectField from 'material-ui/SelectField';
