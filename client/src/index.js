@@ -16,6 +16,7 @@ import {
 import Layout from './components/Layout';
 import Login from './containers/Login';
 import Items from './containers/Items';
+import NotFound from './components/NotFound';
 
 const Boomtown = () => (
     <BrowserRouter>
@@ -26,6 +27,7 @@ const Boomtown = () => (
                         <Route exact path="/" component={Items} />
                         <Route exact path="/login" component={Login} />
                         <Route path="/profile/:id" component={Items} />
+                        <Route component={NotFound} />
                     </Layout>
                 </Provider>
             </MuiThemeProvider>
