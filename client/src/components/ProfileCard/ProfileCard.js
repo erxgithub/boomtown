@@ -7,25 +7,25 @@ import './styles.css';
 
 const ProfileCard = ({profileData}) => (
     <Card className="profileCard">
-        <div className="profile">
-            <div>
-            <div className="profileUser">
-                <p>{profileData.fullname}</p>
-                <p>{profileData.bio}</p>
-            </div>
-            <div className="borrowedItems">
-                <p>Currently borrowing:</p>
-                {profileData.borroweditems.map((item, i) =>
-                    <p key={i}>{`${item.title} from ${item.lender}`}</p>)}
-            </div>
+        <div className="profileWrapper">
+            <div className="profileDetail">
+                <div className="profileUser">
+                    <p>{profileData.fullname}</p>
+                    <p>{profileData.bio}</p>
+                </div>
+                <div className="borrowedItems">
+                    <p>Currently borrowing:</p>
+                    {profileData.borroweditems.map((item, i) =>
+                        <p key={i}>{`${item.title} from ${item.lender}`}</p>)}
+                </div>
             </div>
             <div className="profileSummary">
                 <div>
-                    <div className="profileItem">
+                    <div className="summaryCount">
                         <p>{profileData.shared}</p>
                         <p>Items shared</p>
                     </div>
-                    <div className="profileItem">
+                    <div className="summaryCount">
                         <p>{profileData.borrowed}</p>
                         <p>Items borrowed</p>
                     </div>

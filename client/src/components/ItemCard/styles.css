@@ -1,22 +1,17 @@
 .masonryItem {
-    margin: 1rem;
+    width: 98%;
+    margin: 1%;
 }
 
-@media only screen and (max-width: 599px) {
+@media only screen and (min-width: 600px) {
     .masonryItem {
-        width: 95%;
+        width: 48%;
     }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1239px) {
+@media only screen and (min-width: 960px) {
     .masonryItem {
-        width: 45%;
-    }
-}
-
-@media only screen and (min-width: 1240px) {
-    .masonryItem {
-        width: 30%;
+        width: 31%;
     }
 }
 

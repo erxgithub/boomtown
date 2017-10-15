@@ -13,11 +13,13 @@ import logo from '../../images/boomtown-logo.svg';
 
 const styles = {
     toolbar: {
-        paddingTop: '2rem',
+        paddingTop: '0.5rem',
         paddingLeft: '3rem',
-        paddingBottom: '2rem',
+        paddingBottom: '0.5rem',
         paddingRight: '1rem',
+        flexWrap: 'wrap',
         backgroundColor: 'white',
+        height: 'auto',
     },
     dropdown: {
         paddingTop: '0',

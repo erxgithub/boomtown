@@ -1,29 +1,16 @@
 .profileCard {
-    margin: 2.5rem 0 2rem 0;
+    margin: 3% 1% 2% 1%;
+    width: 50rem;
 }
 
-@media only screen and (max-width: 599px) {
-    .profileCard {
-        width: 100%;
-    }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 1239px) {
-    .profileCard {
-        width: 80%;
-    }
-}
-
-@media only screen and (min-width: 1240px) {
-    .profileCard {
-        width: 50%;
-    }
-}
-
-.profile {
+.profileWrapper {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 2rem 3.25rem 2rem 3.25rem;
+}
+
+.profileDetail {
+    width: 100%;
 }
 
 .profileUser p:nth-child(1) {
@@ -48,17 +35,20 @@
 
 .profileSummary {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
-.profileItem {
-    margin: 1rem 2rem 1rem 2rem;
+.summaryCount {
+    margin: 1rem 0 1rem 0;
 }
 
-.profileItem p:nth-child(1) {
+.summaryCount p:nth-child(1) {
     font-size: 1.25rem;
 }
 
-.profileItem p:nth-child(2) {
+.summaryCount p:nth-child(2) {
     font-size: 1rem;
     color: grey;
 }
@@ -70,4 +60,25 @@
 
 .profileAvatar img {
     border-radius: 50%;
+    max-height: 6rem;
+    max-width: 6rem;
+}
+
+@media only screen and (min-width: 800px) {
+    .profileWrapper {
+        flex-wrap: nowrap;
+    }
+
+    .profileDetail {
+        width: 50%;
+    }
+
+    .profileSummary {
+        width: 50%;
+    }
+
+    .profileAvatar img {
+        max-height: none;
+        max-width: 100%;
+    }
 }
