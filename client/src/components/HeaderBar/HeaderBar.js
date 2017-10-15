@@ -41,7 +41,7 @@ const styles = {
 const HeaderBar = ({tagData, tagValues, handleChange}) => (
     <Toolbar style={styles.toolbar}>
         <ToolbarGroup firstChild={true}>
-            <Link to="/">{<img className="logo" src={logo} alt="My logo" />}</Link>
+            <a href="/">{<img className="logo" src={logo} alt="My logo" />}</a>
             {tagData.length > 0 ?
                 <SelectField
                   multiple={true}

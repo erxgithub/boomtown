@@ -20,18 +20,18 @@ import NotFound from './components/NotFound';
 
 const Boomtown = () => (
     <BrowserRouter>
-        <Switch>
             <MuiThemeProvider muiTheme={muiTheme}>
                 <Provider store={store}>
                     <Layout>
+                    <Switch>
                         <Route exact path="/" component={Items} />
                         <Route exact path="/login" component={Login} />
                         <Route path="/profile/:id" component={Items} />
                         <Route component={NotFound} />
+                    </Switch>
                     </Layout>
                 </Provider>
             </MuiThemeProvider>
-        </Switch>
     </BrowserRouter>
 );
 
