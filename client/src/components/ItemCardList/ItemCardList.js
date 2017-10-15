@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component';
 import './styles.css';
 
@@ -11,5 +12,9 @@ const ItemCardList = ({itemsData}) => (
         )}
     </Masonry>
 );
+
+ItemCardList.propTypes = {
+    itemsData: PropTypes.array
+};
 
 export default ItemCardList;

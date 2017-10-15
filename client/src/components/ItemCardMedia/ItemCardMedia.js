@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {CardMedia, CardTitle} from 'material-ui/Card';
 
 const ItemCardMedia = ({item}) => {
@@ -27,5 +28,24 @@ const ItemCardMedia = ({item}) => {
         );
     }
 }
+
+ItemCardMedia.propTypes = {
+    item: PropTypes.shape({
+        available: PropTypes.bool,
+        borrower: PropTypes.string,
+        created: PropTypes.string,
+        description: PropTypes.string,
+        id: PropTypes.number,
+        imageurl: PropTypes.string,
+        itemowner: PropTypes.shape({
+            bio: PropTypes.string,
+            email: PropTypes.string,
+            fullname: PropTypes.string,
+            id: PropTypes.string
+        }),
+        tags: PropTypes.array,
+        title: PropTypes.string
+    })
+};
 
 export default ItemCardMedia;

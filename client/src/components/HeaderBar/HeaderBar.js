@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
@@ -67,5 +68,11 @@ const HeaderBar = ({tagData, tagValues, handleChange}) => (
         </ToolbarGroup>
     </Toolbar>
 );
+
+HeaderBar.propTypes = {
+    tagData: PropTypes.array,
+    tagValues: PropTypes.array,
+    handleChange: PropTypes.func.isRequired
+};
 
 export default HeaderBar;

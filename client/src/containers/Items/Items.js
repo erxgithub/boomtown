@@ -39,9 +39,7 @@ const Items = ({itemsData, tagData, tagValues, profileData, isLoading, handleCha
                     </div>
                 : ''}
                 {/* And a footer here, but not on the login route... */}
-                <div>
                 <FooterBar />
-                </div>
             </div>
         );
     }
