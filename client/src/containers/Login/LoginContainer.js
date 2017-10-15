@@ -6,6 +6,7 @@ import Login from './Login';
 class LoginContainer extends Component {
 
     static propTypes = {
+        login: PropTypes.string
     };
 
     login = () => {

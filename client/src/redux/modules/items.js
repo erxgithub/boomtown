@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 // action types
 
 const GET_ITEMS = 'GET_ITEMS';
@@ -42,16 +44,11 @@ export const getProfile = (items) => ({
 
 export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
     dispatch(getItemsLoading());
-    //console.log(profileId);
 
     let urls = [
         'http://localhost:3001/items',
         'http://localhost:3001/users'
     ];
-
-    // this.setState({
-    //     isLoading: true
-    // });
 
     Promise.all(urls.map((request) => {
         return fetch(request).then((response) => {
@@ -60,12 +57,6 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
             return data;
         });
     })).then((values) => {
-        //console.log('items', values[0]);
-        //console.log('users', values[1]);
-
-        // let items = values[0];
-        // let users = values[1];
-
         const [items, users] = values;
         const tagData = [];
         const profileData = {
@@ -115,7 +106,6 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
 
             return item;
         }).filter((item) => {
-            //let tagValues = store.getState().tagValues;
             let tagFilter = true;
 
             if (profileId !== undefined) {
@@ -138,29 +128,28 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
 
         tagData.sort();
 
-        //console.log(tagData);
-        //console.log('data', itemsData);
-
         dispatch(getItems(itemsData));
         dispatch(getTags(tagData));
         dispatch(getProfile(profileData));
-
-        //console.log(profileData);
-
-        // this.setState({
-        //     itemsData,
-        //     tagData,
-        //     isLoading: false
-        // });
     }).catch((error) => {
         dispatch(getItemsError(error));
         console.log(error);
     });
 }
 
+fetchItemsAndUsers.propTypes = {
+    tagValues: PropTypes.array,
+    profileId: PropTypes.string
+};
+
 export const loadTagValues = (tagValues) => dispatch => {
+    dispatch(getItemsLoading());
     dispatch(getTagValues(tagValues));
 }
+
+loadTagValues.propTypes = {
+    tagValues: PropTypes.array
+};
 
 //reducers
 
@@ -176,7 +165,7 @@ export default (state = {itemsData: [], tagData: [], tagValues: [], profileData:
       return {...state, isLoading: false, error: action.payload};
     }
     case GET_TAGS: {
-      return {...state, tagData: action.payload, isLoading: false, error: ''};
+      return {...state, tagData: action.payload, error: ''};
     }
     case GET_TAG_VALUES: {
       return {...state, tagValues: action.payload, isLoading: false, error: ''};

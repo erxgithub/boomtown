@@ -23,9 +23,9 @@ const Boomtown = () => (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <Provider store={store}>
                     <Layout>
-                        <Route path="/profile/:id" component={Items} />
-                        <Route exact path="/login" component={Login} />
                         <Route exact path="/" component={Items} />
+                        <Route exact path="/login" component={Login} />
+                        <Route path="/profile/:id" component={Items} />
                     </Layout>
                 </Provider>
             </MuiThemeProvider>

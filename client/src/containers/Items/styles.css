@@ -1,9 +1,15 @@
 .appContent {
   display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.appItems {
+  display: flex;
+  flex-grow: 1;
   margin: 0 auto;
   max-width: 1140px;
   width: 100%;
-  flex:1;
 }
 
 .profileSection {
