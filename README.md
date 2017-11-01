@@ -1,4 +1,4 @@
-# Boomtown Project - Part 2 of 2
+# Boomtown Project - Part 2 of 2 (Work in Progress)
 
 Boomtown is a web-based application that supports a local sharing economy by allowing users to browse, share, and borrow items.
 
