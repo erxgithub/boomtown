@@ -2,18 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Progress from '../../components/Progress';
 import './styles.css';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import HeaderBar from '../../components/HeaderBar';
 import FooterBar from '../../components/FooterBar';
 import ItemCardList from '../../components/ItemCardList';
 import ProfileCard from '../../components/ProfileCard';
-
-const style = {
-    textAlign: 'end',
-    paddingRight: '2rem'
-};
 
 const Items = ({itemsData, tagData, tagValues, profileData, isLoading, handleChange}) => {
     if (isLoading) {
@@ -45,9 +38,6 @@ const Items = ({itemsData, tagData, tagValues, profileData, isLoading, handleCha
                         <ItemCardList itemsData={itemsData} />
                     </div>
                 : ''}
-                <FloatingActionButton secondary={true} style={style} >
-                    <ContentAdd />
-                </FloatingActionButton>
                 {/* And a footer here, but not on the login route... */}
                 <FooterBar />
             </div>

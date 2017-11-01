@@ -1,10 +1,14 @@
-# Boomtown Project - Part 1 of 2
+# Boomtown Project - Part 2 of 2
 
 Boomtown is a web-based application that supports a local sharing economy by allowing users to browse, share, and borrow items.
 
 ## Technologies
 
 React, Redux, and React Router
+Firebase
+Apollo Server/Client
+GraphQL
+Postgres
 
 Material UI components
 - Card, CardActions, CardHeader, CardTitle, CardText, CardMedia
@@ -30,8 +34,13 @@ cd client && npm install
 
 ## Start-up
 
+From inside the `server` directory, run:
+
+```bash
+npm run start
+```
+
 From inside the `client` directory, run:
 
 ```bash
-npm run dev
-```
+npm run start

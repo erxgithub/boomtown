@@ -1,0 +1,41 @@
+.shareFormContainer {
+    display: flex;
+    min-height: 100%;
+    width: 100%;
+}
+
+.shareFormContainer > div {
+    flex:0 1 50%;
+}
+
+.shareFormLeft {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shareCardContainer {
+    max-width: 300px;
+}
+
+.shareFormRight {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepDescription {
+    line-height: 1rem;
+    padding-bottom:1rem;
+    color:white;
+}
+
+.stepButton {
+    margin: 1rem 1rem 1rem 0;
+}
+
+.confirmButton {
+    margin-left: 1rem;
+}

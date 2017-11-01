@@ -46,8 +46,8 @@ export const fetchItemsAndUsers = (tagValues, profileId) => dispatch => {
     dispatch(getItemsLoading());
 
     let urls = [
-        'http://localhost:3001/items',
-        'http://localhost:3001/users'
+        'http://localhost:5000/items',
+        'http://localhost:5000/users'
     ];
 
     Promise.all(urls.map((request) => {

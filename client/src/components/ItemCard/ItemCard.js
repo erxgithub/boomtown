@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Gravatar from 'react-gravatar'
 import Moment from 'moment'
@@ -8,6 +10,43 @@ import Moment from 'moment'
 import ItemCardMedia from '../ItemCardMedia';
 
 import './styles.css';
+
+const handleOpen = () => {
+  //this.setState({open: true});
+};
+
+const handleClose = () => {
+  //this.setState({open: true});
+};
+
+const BorrowItem = () => {
+    console.log("borrow");
+
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onClick={handleClose}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        disabled={true}
+        onClick={handleClose}
+      />,
+    ];
+
+    return (
+        <Dialog
+          title="Dialog With Actions"
+          actions={actions}
+          modal={false}
+          open={false}
+        >
+          Only actions can close this dialog.
+        </Dialog>
+    )
+};
 
 const ItemCard = ({item}) => (
     <Card className="masonryItem">
@@ -25,7 +64,12 @@ const ItemCard = ({item}) => (
             {item.description}
         </CardText>
         <CardActions>
-            {item.available ? <RaisedButton label="BORROW" secondary={true} /> : ''}
+            {item.available ?
+                <div>
+                    <RaisedButton label="BORROW" secondary={true} onClick={handleOpen} />
+                    <BorrowItem />
+                </div>
+                 : ''}
         </CardActions>
     </Card>
 );

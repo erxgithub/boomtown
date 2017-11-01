@@ -1,6 +1,9 @@
-import {combineReducers} from 'redux';
-import itemsReducer from './modules/items';
+import { combineReducers } from 'redux';
+import client from '../config/apolloClient';
+import itemReducer from './modules/items';
+// import userReducer from './modules/user';
 
 export default combineReducers({
-    items: itemsReducer
+    apollo: client.reducer(),
+    items: itemReducer
 });

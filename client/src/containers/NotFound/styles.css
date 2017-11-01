@@ -1,0 +1,19 @@
+.notFoundWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.notFoundWrapper img {
+  margin-bottom: 1rem;
+  max-width: 500px;
+}
+
+.notFoundWrapper p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
